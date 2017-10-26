@@ -1,0 +1,15 @@
+{
+"Path" : ".\\Bin\\NVIDIA-CcminerKlaust\\ccminer.exe",
+"ExtractionPath" : ".\\Bin\\NVIDIA-CcminerKlaust\",
+"Uri" : "https://github.com/nemosminer/ccminer/releases/download/8.14beta/ccminer-814beta-x64-cuda9.7z",
+"Types" : ["NVIDIA"],
+"Arguments" : "-o #PROTOCOL#://#SERVER#:#PORT# -u #LOGIN# -p #PASSWORD# -R 10 -r 4 #ALGORITHMPARAMETERS#",
+"API" : "Ccminer",
+"APIPort" : 4068,
+"Wrap" : false,
+"Dualmining":false,
+"Algorithms": [
+				{"neoscrypt":"-a neoscrypt"}
+              ]
+
+}

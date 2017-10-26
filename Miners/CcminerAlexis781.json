@@ -1,0 +1,25 @@
+{
+"Path" : ".\\Bin\\NVIDIA-Alexis781\\ccminer-alexis.exe",
+"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis781\",
+"Uri" : "https://github.com/nemosminer/ccminer-hcash/releases/download/alexishsr/ccminer-hsr-alexis-x86-cuda8.7z",
+"Types" : ["NVIDIA"],
+"Arguments" : "-o #PROTOCOL#://#SERVER#:#PORT# -u #LOGIN# -p #PASSWORD# -R 10 -r 4 #ALGORITHMPARAMETERS#",
+"API" : "Ccminer",
+"APIPort" : 4068,
+"Wrap" : false,
+"Dualmining":false,
+"Algorithms": [
+				{"hsr":"-a hsr"},
+				{"blake2s":"-a blake2s"},
+				{"blakecoin":"-a blakecoin"},
+				{"veltor":"-a veltor"},
+				{"lyra2v2":"-a lyra2v2"},
+				{"myriad-groestl":"-a myr-gr"},
+				{"nist5":"-a nist5"},
+				{"sib":"-a sib"},
+				{"skein":"-a skein"},
+				{"c11":"-a c11"},
+				{"x17":"-a x17"}
+              ]
+
+}
