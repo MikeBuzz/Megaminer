@@ -1,7 +1,7 @@
 {
-"Path" : ".\\Bin\\NVIDIA-Alexis78cuda8.0\\ccminer_x11gost.exe",
-"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis78cuda8.0\\",
-"Uri" : "https://github.com/nicehash/ccminer-x11gost/releases/download/ccminer-x11gost_windows/ccminer_x11gost.7z",
+"Path" : ".\\Bin\\NVIDIA-Alexis78cuda8\\ccminer-alexis.exe",
+"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis78cuda8\\",
+"Uri" : "https://github.com/nemosminer/ccminer-hcash/releases/download/alexishsr/ccminer-hsr-alexis-x86-cuda8.7z",
 "Types" : ["NVIDIA"],
 "Arguments" : "-o #PROTOCOL#://#SERVER#:#PORT# -u #LOGIN# -p #PASSWORD# -R 10 #ALGORITHMPARAMETERS#",
 "API" : "Ccminer",
@@ -10,8 +10,28 @@
 "Dualmining":false,
 "PrelaunchCommand":"",
 "Algorithms": [
+				{"blake2s":"-a blake2s"},
+				{"blake14r":"-a decred"},
+				{"c11":"-a c11"},
+				{"keccak":"-a keccak"},
+				{"lbry":"-a lbry"},
+				{"myriad-groestl":"-a myr-gr"},
+				{"neoscrypt":"-a neoscrypt"},
+				{"nist5":"-a nist5"},
+				{"quark":"-a quark"},
+				{"qubit":"-a qubit"},
 				{"sib":"-a sib"},
-				{"whirpool":"-a whirl"}
+				{"skein":"-a skein"},
+				{"veltor":"-a veltor"},
+				{"whirpool":"-a whirl"},
+				{"x11gost":"-a sib"},
+				{"x13":"-a x13"},
+				{"x14":"-a x14"},
+				{"x15":"-a x15"},
+				{"x17":"-a x17"},
+				{"hsr":"-a hsr"},
+				{"blakecoin":"-a blakecoin"},
+				{"lyra2v2":"-a lyra2v2"}
               ]
 
 }
