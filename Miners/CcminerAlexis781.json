@@ -1,6 +1,6 @@
 {
 "Path" : ".\\Bin\\NVIDIA-Alexis781\\ccminer-alexis.exe",
-"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis781\",
+"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis781\\",
 "Uri" : "https://github.com/nemosminer/ccminer-hcash/releases/download/alexishsr/ccminer-hsr-alexis-x86-cuda8.7z",
 "Types" : ["NVIDIA"],
 "Arguments" : "-o #PROTOCOL#://#SERVER#:#PORT# -u #LOGIN# -p #PASSWORD# -R 10 -r 4 #ALGORITHMPARAMETERS#",

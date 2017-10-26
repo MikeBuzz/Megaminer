@@ -1,6 +1,6 @@
 {
 "Path" : ".\\Bin\\NVIDIA-Alexis78cuda9\\ccminer_x86.exe",
-"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis78cuda9\",
+"ExtractionPath" : ".\\Bin\\NVIDIA-Alexis78cuda9\\",
 "Uri" : "https://github.com/nemosminer/ccminer-xevan/releases/download/ccminer-xevan/ccminer_x86.7z",
 "Types" : ["NVIDIA"],
 "Arguments" : "-o #PROTOCOL#://#SERVER#:#PORT# -u #LOGIN# -p #PASSWORD# -R 10 -r 4 #ALGORITHMPARAMETERS#",
