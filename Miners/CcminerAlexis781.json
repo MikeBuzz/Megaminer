@@ -17,8 +17,7 @@
 				{"myriad-groestl":"-a myr-gr"},
 				{"nist5":"-a nist5"},
 				{"sib":"-a sib"},
-				{"skein":"-a skein"},
-				{"c11":"-a c11"}
+				{"skein":"-a skein"}
               ]
 
 }
