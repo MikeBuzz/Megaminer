@@ -41,6 +41,7 @@
 -- WALLETS, for autoexchange pools you only need set a wallet for prefered currency (@@currency), other pools without autoexchange like Yiimp need as login a wallet of same coin you are mining, you can add wallets while pattern @@WALLET_XXX (XXX=currency symbol)
 
 @@WALLET_BTC=39hpJhfk5iVr97ouFFggK4k6zW5NerymxV
+@@WALLET_NICE=379uSek3n8UmPtM1EdxUweAta1VWKsJFKw
 @@WALLET_BTX=1FJThobhKa2wAHTHso3Z4JzCwZZGiFV1w4
 @@WALLET_DCR=DsbiLjwvAdK2JpzBqeuYrtsQR8JwDDYLoRe
 @@WALLET_DNR=DPJzmDgSnSJ7Sa5uoKdKPHisYstM3Wuqgi
