@@ -19,7 +19,6 @@
                 {"skein" : "-a skein"},
                 {"veltor" : "-a veltor"},
                 {"x14" : "-a x14" },
-                {"x13" : "-a x13" },
                 {"x11evo" : "-a x11evo"},
                 {"x17" : "-a x17" },
                 {"Keccak":"-a keccak"},
