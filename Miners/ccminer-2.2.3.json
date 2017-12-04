@@ -1,0 +1,21 @@
+{
+"Path" : ".\\Bin\\NVIDIA-ccminer-2.2.3\\ccminer-x64.exe",
+"ExtractionPath" : ".\\Bin\\NVIDIA-ccminer-2.2.3\\",
+"Uri" : "https://github.com/tpruvot/ccminer/releases/download/2.2.3-tpruvot/ccminer-x64-2.2.3-cuda9.7z",
+"Types" : ["NVIDIA"],
+"Arguments" : "-o #PROTOCOL#://#SERVER#:#PORT# -u #LOGIN# -p #PASSWORD# -R 10 -r 4 #ALGORITHMPARAMETERS#",
+"API" : "Ccminer",
+"APIPort" : 4068,
+"Wrap" : false,
+"Dualmining":false,
+"PrelaunchCommand":"",
+"Algorithms": [
+				{"cryptonight":"-a cryptonight"},
+				{"hmq1725":"-a hmq1725"},
+				{"sib":"-a sib"},
+				{"timetravel":"-a timetravel"},
+				{"whirpool":"-a whirl"},
+				{"keccakc":"-a keccakc"}
+              ]
+
+}
