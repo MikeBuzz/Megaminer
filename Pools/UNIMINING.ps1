@@ -118,7 +118,7 @@ if (($Querymode -eq "core" ) -or ($Querymode -eq "Menu")){
                                 Host          = "pool.unimining.net"
                                 Port          = $coin.port
                                 User          = $CoinsWallets.get_item($Uni_Simbol)
-                                Pass          = "c=$Uni_symbol,ID=$WorkerName"
+                                Pass          = "c=$Uni_symbol,ID=#WorkerName#"
                                 Location      = 'US'
                                 SSL           = $false
                                 Symbol        = $Uni_Simbol
@@ -129,6 +129,7 @@ if (($Querymode -eq "core" ) -or ($Querymode -eq "Menu")){
                                 PoolHashRate  = $coin.HashRate
                                 Blocks_24h    = $coin."24h_blocks"
                                 WalletMode    = $WalletMode
+                                WalletSymbol = $Uni_Simbol
                                 PoolName = $Name
                                 Fee = $coin.Fees/100
                                 }

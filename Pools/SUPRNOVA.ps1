@@ -11,7 +11,7 @@ $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
 $ActiveOnManualMode    = $true
 $ActiveOnAutomaticMode = $false
 $ActiveOnAutomatic24hMode=$false
-$AbbName='SNOVA'
+$AbbName='SNV'
 $WalletMode="APIKEY"
 $Result=@()
 
@@ -36,9 +36,6 @@ if ($Querymode -eq "info"){
                             Switch($Info.Symbol) {
                                 "DGB" {$Info.Symbol=$Info.Symbol+($Info.Algorithm.substring(0,1))}
                                }
-
-
-
 
 
                             try {
@@ -112,21 +109,8 @@ if (($Querymode -eq "core" ) -or ($Querymode -eq "Menu")){
 
 
 
-        $ManualMiningApiUse=(Get-Content config.txt | Where-Object {$_ -like '@@MANUALMININGAPIUSE=*'} )-replace '@@MANUALMININGAPIUSE=',''
-
-
-
         $Pools |ForEach-Object {
 
-
-                                if (($ManualMiningApiUse -eq $true) -and  ($Querymode -eq "Menu")) {
-                                        $ApiResponse=$null
-                                        try {
-                                                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-                                                $Apicall="https://"+$_.Server+"/index.php?page=api&action=public"
-                                                $ApiResponse=(Invoke-WebRequest $ApiCall -UseBasicParsing  -TimeoutSec 3| ConvertFrom-Json)
-                                            } catch{}
-                                        }
 
 
                             $Result+=[PSCustomObject]@{
@@ -145,19 +129,20 @@ if (($Querymode -eq "core" ) -or ($Querymode -eq "Menu")){
                                     AbbName       = $AbbName
                                     ActiveOnManualMode    = $ActiveOnManualMode
                                     ActiveOnAutomaticMode = $ActiveOnAutomaticMode
-                                    PoolWorkers     = $ApiResponse.Workers
+                                    PoolWorkers     = $Null
                                     PoolHashRate    = [double]$ApiResponse.hashrate
                                     PoolName        = $Name
                                     WalletMode      = $WalletMode
                                     OriginalAlgorithm =  $_.Algo
                                     OriginalCoin = $_.Coin
                                     Fee = 0.01
+                                    EthStMode = 3
 
 
                                 }
 
                         }
-                if (($ManualMiningApiUse -eq $true) -and  ($Querymode -eq "Menu")) {Remove-Variable ApiResponse}
+
                 Remove-Variable Pools
         }
 

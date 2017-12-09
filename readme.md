@@ -16,6 +16,8 @@ YIIMP -- Anonymous, no autoexchange, must set a wallet for each coin
 
 NICEHASH-- Anonymous, autoexchange to BTC
 
+NANOPOOL -- Anonymous, no autoexchange, must set a wallet for each coin
+
 FLYPOOL -- Anonymous, manual mode only
 
 UNIMINING -- No registration, No autoexchange, need wallet for each coin on config.txt
@@ -28,15 +30,17 @@ WHATTOMINE (virtual) - Based on statistics of whattomine, it use MPH and Suprnov
 ---- ALGOS/COINS SUPORTED (NVIDIA) -------------------------------
 
 **Mining Pool Hub, Yiimp, ZPOOL, AhashPool, Unimining, Italyiimp Nicehash and Hash Refinery (must be suported by pool)
-   skunk, jha, Blakecoin, c11, Groestl, yescrypt, veltor, blake, equihash, skein, scrypt, sib, neoscrypt, lbry, Myriad-Groestl, Lyra2v2, 
-   Keccak, blake2s,x11evo,sia, vanilla, timetravel, tribus, Qubit , X13, x17, lyra2z, hmq1725, pascal, bitcore, ethash, 
-   cryptonight, Nist5, quark, blake14r,x11gost, ethash|blake2s, ethash|lbry, ethash|pascal, ethash|blake14r, PHI, HSR
+   skunk, jha, Blakecoin, c11, Groestl, veltor, blake, equihash, skein, sib, neoscrypt, lbry, Myriad-Groestl, Lyra2v2, 
+   Keccak, blake2s,x11evo,sia, vanilla, timetravel, tribus, x17, lyra2z, hmq1725, pascal, bitcore, ethash, 
+   cryptonight, Nist5, quark, blake14r,x11gost, ethash|blake2s, ethash|lbry, ethash|pascal, ethash|blake14r, PHI, HSR, xevan
 
 **SUPRNOVA
    DECRED(DCR), DIGIBYTE-SKEIN(DGB), HUSH(HUSH), LIBRARY(LBRY), MONACOIN (MONA), SIGNATUM(SIGT), ZCASH(ZEC),
    ZENCASH (ZEN), ZCLASSIC(ZCL), KOMODO(KMD), MONERO(XMR), DIGIBYTE-GROESTL(DGB), SIBCOIN (SIB) ,UBIQ (UBQ), EXPANSE (EXP),
-   BITSEND (BSD),ELECTRONEUM (ETN),SMARTCASH (SMART),BITCOINZ (BTCZ),BITCOIN GOLD (BCG)
+   BITSEND (BSD),ELECTRONEUM (ETN),SMARTCASH (SMART),BITCOINZ (BTCZ),BITCOIN GOLD (BCG),STACKS (STACK), POLYTMOS (POLY)
 
+**NANOPOOL
+	ELECTRONEUM (ETN),ETHEREUM+DECRED(ETH+DCR),ETHEREUM+LBRY(ETH+LBRY),ETHEREUM+SIACOIN(ETH+SIA), MONERO(XMR),  ZCASH(ZEC)
 
 **BLOCKSFACTORY
    DIGIBYTE-SKEIN(DGB), FEATHERCOIN(FTC), PHOENIXCOIN(PXC), ORBITCOIN(ORB), GUNCOIN(GUN)
@@ -45,14 +49,9 @@ WHATTOMINE (virtual) - Based on statistics of whattomine, it use MPH and Suprnov
    ZCASH
 
 
-**WHATTOMINE (virtual)
-   DECRED(DCR),  HUSH(HUSH), LBRY(LBRY), MONACOIN (MONA), ZCASH(ZEC), ZENCASH (ZEN), ZCOIN(XZC), ZCLASSIC(ZCL), VERTCOIN (VTC)
-   KOMODO(KMD), MONERO(XMR), DIGIBYTE-GROESTL(DGB),SIBCOIN (SIB),UBIQ (UBQ), EXPANSE (EXP), ETHEREUM CLASSIC (ETC), MYRIAD-GROESTL (XMY), MUSICOIN (MUSIC),
-   ETHEREUM+DECRED(ETH+DCR),ETHEREUM+LBRY(ETH+LBRY),BITCOINZ (BTCZ)
-
 
 **CROSSED BETWEEN POOLS
-    ETHEREUM+DECRED, ETHEREUM+LBRY, ETHEREUM+PASCAL, ETHEREUM+SIACOIN
+    ETHEREUM+DECRED, ETHEREUM+LBRY, ETHEREUM+SIACOIN
 
 
 ---- INSTRUCTIONS ----------------------------------------------
@@ -73,13 +72,11 @@ Default donation is 5 minutes each day on automatic pools, you can change it at 
 ---- UPGRADE PROCEDURE ------------------------------------
 
 Safest way is download new software and copy from old version "stats" folders and "config.txt" file.
-If new verson haven´t miners update you can copy "bin" folder
-If there is a new version on some miner is recomended delete hasrate.txt files of that miner on miners folder to force benchmark again.
+If new verson has no miners update you can copy "bin" folder
+If there is a new miner version is recomended delete miner_algo_hashrate.txt files on miners folder to force benchmark again.
 
 
--------NEW FEATURES OVER NEMO AND AARONSACE SOFTWARE -----------
-
-In this software you can get same features than Nemosminer (Zpool) and Multipoolminer (MiningPoolHub), and also:
+-------NEW FEATURES OVER BASE SOFTWARE -----------
 
 -Menus sytem to choose coin/algo/pool and start mining
 
@@ -87,9 +84,9 @@ In this software you can get same features than Nemosminer (Zpool) and Multipool
 
 -Can mine on "Virtual" Pool Whattomine, based on statistics of whattomine, it use MPH,Yiimp and Suprnova servers to mine most profitable coin, you must configure wallets on config.cfg and also have an account on Suprnova to use. 
 
--Can mine on any of this pools (or all at same time): Ahashpool, Nicehash, Zpool, Unimining, Whattomine (virtual) HashRefinery, MPH with auto coin change based on pool profit for each algorithm with dual mining between diferent pools (ex. Eth on MPH and lbry on Zpool)
+-Can mine on any of this pools (or all at same time): Ahashpool, Nanopool, YIIMP, Nicehash, Zpool, Unimining, Whattomine (virtual) HashRefinery, MPH with auto coin change based on pool profit for each algorithm with dual mining between diferent pools (ex. Eth on MPH and lbry on Zpool)
 
--Can mine on Suprnova,Nicehash, MPH, YIIMP, Flypool or BlocksFactory pool without autochange or profit calculation, manual coin selection
+-Can mine on Suprnova,Nicehash, MPH, Flypool or BlocksFactory pool without autochange or profit calculation, manual coin selection
 
 -Fastest miner for each algo/coin preselected for Nvidia Pascal (08/01/2017) on all pools.
 
@@ -117,6 +114,8 @@ In this software you can get same features than Nemosminer (Zpool) and Multipool
 
 -Miners and Pools fees are included in profit calculation
 
+-For mixed rigs (or for testing purpose on same cards rigs) you can group your cards allowing each group work at its best algo and difficulty
+
 
 
 ----- DISCLAIMER ---- ------------------------------------------
@@ -139,7 +138,7 @@ Local Currency exchange rate to BTC is taken from Coindesk, Local currency profi
 Based 70% on aaronsace, 30% is mine (aprox.) Donations to
 
 *Aaronsace - 1MsrCoAt8qM53HUMsUxvy9gMj3QVbHLazH
-*Me - 1AVMHnFgc6SW33cwqrDyy2Fug9CsS8u6TM
+*Tutulino (Me)  - 1AVMHnFgc6SW33cwqrDyy2Fug9CsS8u6TM
 
 
 
