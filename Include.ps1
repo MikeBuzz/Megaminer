@@ -1,6 +1,102 @@
 ﻿
+Add-Type -Path .\OpenCL\*.cs
+
+ 
 
 
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+
+
+Function WriteLog ($Message,$object, $LogFile) {
+  
+    $date=get-date
+    $date | Set-Content  -Path $LogFile
+    $Message | Set-Content  -Path $LogFile
+    if ($object -ne $null) {$object | convertto-json | Set-Content  -Path $LogFile}
+    
+}
+
+
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+
+
+Function Timed-ReadKb{   
+    param(
+        [Parameter(Mandatory = $true)]
+        [int]$secondsToWait,
+        [Parameter(Mandatory = $true)]
+        [array]$ValidKeys
+
+    )
+
+    $Loopstart=get-date 
+    $KeyPressed=$null    
+
+    while ((NEW-TIMESPAN $Loopstart (get-date)).Seconds -le $SecondsToWait -and $ValidKeys -notcontains $KeyPressed){
+        if ($host.ui.RawUi.KeyAvailable) {
+                    $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
+                    $KeyPressed=$Key.character
+                    while ($Host.UI.RawUI.KeyAvailable)  {$host.ui.RawUi.Flushinputbuffer()} #keyb buffer flush
+                    
+                    }
+
+         start-sleep -m 30            
+
+
+   }  
+
+   $KeyPressed
+}
+
+
+
+
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+
+function Get-Gpu-Platform {
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]$Type
+    )
+    if ($Type -eq "AMD") {$return=$([array]::IndexOf(([OpenCl.Platform]::GetPlatformIDs() | Select-Object -ExpandProperty Vendor), 'Advanced Micro Devices, Inc.'))} 
+    else {$return=0}
+
+    $return
+
+}
+
+
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+
+function Clear-Screen-Zone {
+    param(
+        [Parameter(Mandatory = $true)]
+        [int]$startY,
+        [Parameter(Mandatory = $true)]
+        [int]$endY
+    )
+  
+    $BlankLine="                                                                                                                    "
+  
+
+Set-ConsolePosition 0 $start
+
+for ($i=$startY;$i -le $endY;$i++) {
+        $BlankLine | write-host
+        }
+}
+
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
+#************************************************************************************************************************************************************************************
 
 function Get-Live-HashRate {
     param(
@@ -10,8 +106,7 @@ function Get-Live-HashRate {
         [Int]$Port, 
         [Parameter(Mandatory = $false)]
         [Object]$Parameters = @{} 
-        #[Parameter(Mandatory = $false)]
-        #[Bool]$Safe = $false
+
     )
     
     $Server = "localhost"
@@ -193,26 +288,49 @@ function Get-Live-HashRate {
                     if ($HashRate -eq "") {$HashRate = $Data[3]}
 
                     
-            }
+                        }
             "wrapper" {
                     $HashRate = ""
                     $HashRate = Get-Content ".\Wrapper_$Port.txt"
                     $HashRate =  $HashRate -replace ',','.'
+                        }
 
+             "castXMR" {
+                    $Request = Invoke-WebRequest "http://$($Server):$Port" -UseBasicParsing
 
+                    $Data = $Request | ConvertFrom-Json 
+                    $HashRate =  [Double]($Data.devices.hash_rate | Measure-Object -Sum).Sum / 1000
 
-                }
-        }
+                    }
 
+            "XMrig" {
+                        $Request = Invoke-WebRequest "http://$($Server):$Port/api.json" -UseBasicParsing
+    
+                        $Data = $Request | ConvertFrom-Json 
+                        $HashRate =   [Double]$Data.hashrate.total[0]
+    
+                        }
+
+             }
+        
         $HashRates=@()
         $HashRates += [double]$HashRate
         $HashRates += [double]$HashRate_Dual
 
         $HashRates
     }
-    catch {
-    }
+    catch {}
 }
+
+
+
+
+
+
+
+
+  
+
 
 
 

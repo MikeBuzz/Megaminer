@@ -6,7 +6,6 @@
 
 @@USERNAME=MikeBuzz
 
-
 --Preferred Currency you will be pay, only for anonymous pools with autoexchange (Zpool, HR...), must set wallet for this currency on "Wallets Section"
 
 @@CURRENCY=BTC
@@ -19,11 +18,9 @@
 
 @@LOCATION=GB
 
-
 -- Time in seconds for recheck profit and select more profitable algorithm (less than 600 not recommended)
 
 @@INTERVAL=600
-
 
 - Benchmarks interval time (less than 200 not recommended)
 
@@ -33,15 +30,15 @@
 
 @@STARTSCREEN=PROFITS
 
--- Gpu Groups, you can group your cards as you want, my recommendation is a group for each model of card on your rig. Each group will be bechmarking and running separately
--- You can identify your GPU platform and card id launching GpuList.bat
--- If you change this groups you must delete stats folder content for benchmark run again
+-- Gpu Groups, you can group your cards as you want, my recomendation is a group for each model of card on your rig. Each group will be bechmarking and running separately
+-- You can identify your GPUs id launching GpuList.bat. For NVIDIA, GPUPlatform is irrelevant, for AMD, try 0,1,2
+-- If you change this groups you must delete stats folder content for becnchmark run again
 -- Type must be NVIDIA or AMD
 -- Example for rig with 5 nvidia identical cards @@GPUGROUPS=[{"GroupName" : "Rig1070","Type":"NVIDIA","GpuPlatform":"0","Gpus":"0,1,2,3,4"}]
 -- Example for rig with  7 nvidia (5x1080,2x1060) @@GPUGROUPS=[{"GroupName" : "1080","Type":"NVIDIA","GpuPlatform":"0","Gpus":"0,1,2,3,4"} , {"GroupName" : "1060","Type":"NVIDIA","GpuPlatform":"0","Gpus":"5,6"} ]
+-- For CPU Mining you must add a group with Type "CPU", example {"GroupName" : "CPU","Type":"CPU"}
 
-@@GPUGROUPS=[{"GroupName" : "1080ti","Type":"NVIDIA","GpuPlatform":"0","Gpus":"0"} , {"GroupName" : "1060","Type":"NVIDIA","GpuPlatform":"0","Gpus":"1"} ]
-
+@@GPUGROUPS=[{"GroupName" : "1070","Type":"NVIDIA","Gpus":"0"} ]
 
 -- WALLETS, for autoexchange pools you only need set a wallet for prefered currency (@@currency), other pools without autoexchange like Yiimp need as login a wallet of same coin you are mining, you can add wallets while pattern @@WALLET_XXX = YYYYY (XXX=currency symbol; YYYYY= your wallet)
 -- For nicehash, if a @@WALLET_BTC_NICE=XXXXXXX is found it will be used, if not @@WALLET_BTC will be used
@@ -55,14 +52,20 @@
 @@WALLET_EXP=0x65722bc8776b153b941edfc3adea6ab9f82edd92
 @@WALLET_FTC=6mQLVT2MeqW1rHRWTBoUBJWH8ipXb1Y5C1
 @@WALLET_GRS=FarbpXVzNUqejdJdbD55Ft2VpFSTHWoy84
-@@WALLET_ORB=
 @@WALLET_SIB=SZeJJLpozDzVPHESZuE6BmThufMzxtHjyK
 @@WALLET_SIGT=BDarDbapFLve2ttVEpshg5jobWkXj6ToSm
 @@WALLET_VTC=VkZbordS7EVrBhyXug4GYxvf41JpafQV8q
-@@WALLET_XLR=
 @@WALLET_XVG=DFjrATNgyg2tPLUJY5VpqhtMtJGFy6x8Aw
 @@WALLET_ZEC=t1Rd2ATZnq9Mbq6ydk81TMvSPcZ2i4sjC8d
 @@WALLET_UBQ=0x7af44beb3c8d9bb4ece33b27a603727f6c19ecca
+@@WALLET_GBX=GNWvpLEsuggx4LcdJpX8uauDQNRPTaRER5
+@@WALLET_ETN=etnjzKFU6ogESSKRZZbdqraPdcKVxEC17Cm1Xvbyy76PARQMmgrgceH4krAH6xmjKwJ3HtSAKuyFm1BBWYqtchtq9tBap8Qr4M.27f2d51a2cdd5ccd7343e777269ab4a41b64e4d8f62c405bb0c3c6a273a81edc.Rig
+@@WALLET_ETH=0x245b419244dc43f712d3851732f7cc94b6224da1
+@@WALLET_ETC=0x281eef03811a0a2c9a4da4fe5d7f0bacb3cafacf
+@@WALLET_XMR=4ALcw9nTAStZSshoWVUJakZ6tLwTDhixhQUQNJkCn4t3fG3MMK19WZM44HnQRvjqmz4LkkA8t565v7iBwQXx2r34HNroSAZ.b206024a47713a004b6d023567e4f14f780155c19050cae708d583d5c64ca813.Rig
+@@WALLET_TAJ=TLLakbw11hLQCs2ig6ZZMkwNuk579Ddcyb
+@@WALLET_NEVA=NXPxwszviq3yEeheGUUMtZ7nd3SZoMmqZa
+@@WALLET_CREA=CWJzEfdzJMV8j8qEfaFdaZdtXmCoEaXUqd
 
 -- API Keys, Non Anonymous pools (Suprnova, MPH) requires api key to get wallets info (format @@APIKEY_NAMEOFPOOL=XXXXXXXXXX)
 

@@ -48,14 +48,9 @@ if ($Querymode -eq "info"){
 
                             
                             try {
-                                $ApiKeyPattern='@@APIKEY_MINING_POOL_HUB=*'
-                                $ApiKey = (Get-Content config.txt | Where-Object {$_ -like $ApiKeyPattern} )-replace $ApiKeyPattern,''
-
-                                $http="http://"+$Info.Coin+".miningpoolhub.com/index.php?page=api&action=getdashboarddata&api_key="+$ApiKey+"&id="
-                                #$http |write-host                                
-                                $MiningPoolHub_Request = Invoke-WebRequest $http -UseBasicParsing -timeoutsec 10 | ConvertFrom-Json | Select-Object -ExpandProperty getdashboarddata | Select-Object -ExpandProperty data
-
-                        
+                                    $http="http://"+$Info.Coin+".miningpoolhub.com/index.php?page=api&action=getdashboarddata&api_key="+$Info.ApiKey+"&id="
+                                    #$http |write-host                                
+                                    $MiningPoolHub_Request = Invoke-WebRequest $http -UseBasicParsing -timeoutsec 10 | ConvertFrom-Json | Select-Object -ExpandProperty getdashboarddata | Select-Object -ExpandProperty data
                             }
                             catch {}
         
@@ -113,7 +108,6 @@ if (($Querymode -eq "core" ) -or ($Querymode -eq "Menu")){
                 $Locations | ForEach-Object {
                         $Location = $_
 
-                        if ($MiningPoolHub_Algorithm -ne 'Blake2b') { #mph has different stratum protocol for blake2b, it has problem with some miners
                                 $Result+=[PSCustomObject]@{
                                             Algorithm     = $MiningPoolHub_Algorithm
                                             Info          = $MiningPoolHub_Coin
@@ -131,13 +125,13 @@ if (($Querymode -eq "core" ) -or ($Querymode -eq "Menu")){
                                             ActiveOnManualMode    = $ActiveOnManualMode
                                             ActiveOnAutomaticMode = $ActiveOnAutomaticMode
                                             WalletMode     = $WalletMode
+                                            WalletSymbol= $MiningPoolHub_Coin #not symbol available
                                             PoolName = $Name
                                             OriginalAlgorithm = $MiningPoolHub_OriginalAlgorithm
                                             OriginalCoin = $MiningPoolHub_OriginalCoin
                                             Fee = 0.009
                                             EthStMode = 3
                                             }
-                                        }
                         }
 
             }
