@@ -13,14 +13,8 @@
 "Fee":"0",
 "Algorithms": [
           {"Lyra2v2":"lyra2rev2"}
-              
-              
-             
-           
-            ]
+          {"blake2s":"blake2s"},
+	{"lbry":"lbry"}
+]
 
-}
-
-
-  
- 
+} 
